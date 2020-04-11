@@ -17,16 +17,19 @@ class RutService(ServiceBase):
         rutConDv = rut
         rut = re.sub('-', '', rutConDv)[:-1]
         dv = rutConDv.strip()[-1].upper()
-        reversa = map(int, reversed(rut))
-        factores = cycle(range(2, 8))
-        suma = sum(d * f for d, f in zip(reversa, factores))
-        dvReal = str((-suma) % 11)
-        if (dv == dvReal):
-            return ('El digito verificador ' + dv + ' es correcto para el RUT ' + rut)
-        elif (dv == 'K' and dvReal == '10'):
-            return ('El digito verificador ' + dv + ' es correcto para el RUT ' + rut)
+        if (rut.isnumeric() and dv.isnumeric()):
+            reversa = map(int, reversed(rut))
+            factores = cycle(range(2, 8))
+            suma = sum(d * f for d, f in zip(reversa, factores))
+            dvReal = str((-suma) % 11)
+            if (dv == dvReal):
+                return ('El digito verificador ' + dv + ' es correcto para el RUT ' + rut)
+            elif (dv == 'K' and dvReal == '10'):
+                return ('El digito verificador ' + dv + ' es correcto para el RUT ' + rut)
+            else:
+                return ('El digito verificador ' + dv + ' es incorrecto para el RUT ' + rut)
         else:
-            return ('El digito verificador ' + dv + ' es incorrecto para el RUT ' + rut)
+            return ('Por favor ingrese solo numeros.')
 
 class NombreService(ServiceBase):
     @rpc(Unicode, Unicode, Unicode, Unicode, _returns=Unicode)
