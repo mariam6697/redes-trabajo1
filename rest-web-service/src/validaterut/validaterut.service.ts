@@ -11,7 +11,8 @@ export class ValidaterutService {
 	// Validar que sea un número y válido
 	var DV = rut.rut.substr(-1);
 	var rutTmp = rut.rut.substring(0, rut.rut.length - 1);
-	rutTmp = rutTmp.replace("-","");
+	rutTmp = rutTmp.split("-").join("");
+	rutTmp = rutTmp.split(".").join("");
 	if(isNaN(Number(rutTmp)) || isNaN(Number(DV)) && DV.toUpperCase()!="K"){
 		return `Ingrese un rut valido`
 	}else{
