@@ -14,7 +14,7 @@ El servicio cuenta con dos métodos: `rut` y `nombre`:
 * `nombre` recibe cuatro parámetros que son cadenas de texto: `nombres`, `paterno`, `materno` y `genero`. Este último corresponde a `M` o `F` y no es sensible a mayúsculas.
 Ambos métodos responden un mensaje que indican si el dígito verificador es válido (en caso de `rut`) o un saludo personalizado (en caso de `nombre`).
 
-# Cliente
+### Cliente
 
 
 ## Servicio web REST
@@ -29,5 +29,5 @@ Para poder levantar el servidor es necesario tener una version de Nodejs superio
 En la ruta `validarut` podemos encontrarnos con el primer método para la validación de un rut ingresado por el método `POST`. Este método recibe cualquier tipo de dato y es verificado dentro del servicio. El Rut ingresado puede (o no) tener un guión para separar el dígito verificado. Finalmente nos otorgará la informacin acerca de si el RUT ingresado es válido o no.
 
 
-# Cliente
+### Cliente
 
