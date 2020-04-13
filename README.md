@@ -17,6 +17,8 @@ Ambos métodos responden un mensaje que indican si el dígito verificador es vá
 ### Cliente
 
 
+
+
 ## Servicio web REST
 REST es una interfaz para conectar varios sistemas basados en el protocolo HTTP y sirve para obtener, generar datos y operaciones, devolviendo esos datos en un formato JSON.
 Para poder levantar el servidor es necesario tener una version de Nodejs superior a 10.13.0 y NPM instalado.
@@ -26,7 +28,9 @@ Para poder levantar el servidor es necesario tener una version de Nodejs superio
 * Finalmente ejecutar `npm run start`
 * EL servicio web se encontrará disponible en la dirección `http://localhost:3000`
 
-En la ruta `validarut` podemos encontrarnos con el primer método para la validación de un rut ingresado por el método `POST`. Este método recibe cualquier tipo de dato y es verificado dentro del servicio. El Rut ingresado puede (o no) tener un guión para separar el dígito verificado. Finalmente nos otorgará la informacin acerca de si el RUT ingresado es válido o no.
+En la ruta `validarut` podemos encontrarnos con el primer método para la validación de un rut ingresado por el método `Post` desde el `body`. Este método recibe cualquier tipo de dato y es verificado dentro del servicio. El `rut` ingresado puede (o no) tener un guión para separar el dígito verificado. Finalmente nos otorgará la informacin acerca de si el `rut` ingresado es válido o no.
+
+En la ruta `saludo` podemos encontrarnos con el segundo servicio que tiene la función de retornar un saludo personalizado en función del género del usuario. Ingresado por el método `Post` desde el `body`.  Los parámetros a ingresar son `nombres` que corresponde a los nombres del usuario. Los apellidos se ingresan en `materno` y `paterno`, mientras que el `genero` debe ser "M" ó "m"
 
 
 ### Cliente
