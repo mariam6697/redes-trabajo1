@@ -1,1 +1,3 @@
 soap-web-service/venv/
+soap-web-service/__pycache__/
+.vscode

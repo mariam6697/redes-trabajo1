@@ -2,21 +2,19 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 from spyne.application import Application
 from spyne.decorator import rpc
-from spyne.model.primitive.number import Integer
+from cors import CorsService
 from spyne.model.primitive.string import Unicode
-from spyne.service import ServiceBase
-from spyne import Iterable
 from spyne.protocol.soap.soap11 import Soap11
 from spyne.server.wsgi import WsgiApplication
-from funciones import validarRut, generarSaludo
+from funciones import validarRut, generarSaludo, Respuesta
 
-class RutService(ServiceBase):
-    @rpc(Unicode, _returns=Unicode)
+class RutService(CorsService):
+    @rpc(Unicode, _returns=Respuesta)
     def rut(ctx, rut):
         return validarRut(ctx, rut)
     
-class NombreService(ServiceBase):
-    @rpc(Unicode, Unicode, Unicode, Unicode, _returns=Unicode)
+class NombreService(CorsService):
+    @rpc(Unicode, Unicode, Unicode, Unicode, _returns=Respuesta)
     def nombre(ctx, nombres, paterno, materno, genero):
         return generarSaludo(ctx, nombres, paterno, materno, genero)
 

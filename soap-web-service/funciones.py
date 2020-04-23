@@ -1,11 +1,20 @@
 from itertools import cycle
+from spyne.model.complex import ComplexModel
+from spyne import Boolean, String
 import re
+
+class Respuesta(ComplexModel):
+    estado = Boolean
+    mensaje = String
+    def __init__(self, estado, mensaje):
+        super(Respuesta, self).__init__()
+        self.estado = estado
+        self.mensaje = mensaje
 
 def validarRut(ctx, rut):
     rutConDv = rut
-    rut = re.sub('-', '', rutConDv)[:-1]
-    rut = rut.replace('.', '')
-    print(rut)
+    rut = re.sub('-', '', rutConDv)[:-1].replace('.', '')
+    print("RUT ingresado", rut)
     dv = rutConDv.strip()[-1].upper()
     if (rut.isnumeric() and (dv.isnumeric() or dv == 'K')):
         reversa = map(int, reversed(rut))
@@ -13,25 +22,28 @@ def validarRut(ctx, rut):
         suma = sum(d * f for d, f in zip(reversa, factores))
         dvReal = str((-suma) % 11)
         if (dv == dvReal):
-            return ('El digito verificador ' + dv + ' es correcto para el RUT ' + rut)
+            return Respuesta(True, 'El dígito verificador ' + dv + ' es correcto para el RUT ' + rut)
         elif (dv == 'K' and dvReal == '10'):
-            return ('El digito verificador ' + dv + ' es correcto para el RUT ' + rut)
+            return Respuesta(True, 'El dígito verificador ' + dv + ' es correcto para el RUT ' + rut)
         else:
-            return ('El digito verificador ' + dv + ' es incorrecto para el RUT ' + rut)
+            return Respuesta(False, 'El dígito verificador ' + dv + ' es incorrecto para el RUT ' + rut)
     else:
-        return ('Por favor ingrese solo numeros, guión o K.')
+        return Respuesta(False, 'Ingrese sólo números, guión y K')
 
 def generarSaludo(ctx, nombres, paterno, materno, genero):
-    mujer = False
-    genero = genero.upper() if genero != None else None
-    if (genero == 'F'):
-        mujer = True
-        saludo = 'Sra.'
-    elif (genero == 'M'):
-        saludo = 'Sr.'
-    else:
-        return ('Genero no valido. Intente nuevamente.')
-    if (nombres != None and paterno != None and materno != None):
+    if (nombres != None and paterno != None and materno != None and genero != None):
         nombreCompleto = (nombres + ' ' + paterno + ' ' + materno).title()
-        return (('Bienvenida' if mujer else 'Bienvenido') + ' ' + saludo + ' ' + nombreCompleto)
-    return ('Por favor rellene todos los campos.')
+        mujer = False
+        genero = genero.upper() if genero != None else None
+        if (genero == 'F'):
+            mujer = True
+            saludo = 'Sra.'
+        elif (genero == 'M'):
+            saludo = 'Sr.'
+        else:
+            return Respuesta(False, 'Género no válido. Intente nuevamente.')
+        return Respuesta(True, ('Bienvenida' if mujer else 'Bienvenido') + ' ' + saludo + ' ' + nombreCompleto)
+    elif (genero == None):
+        return Respuesta(False, 'Ingrese un género.')
+    else:
+        return Respuesta(False, 'Por favor rellene todos los campos.')
