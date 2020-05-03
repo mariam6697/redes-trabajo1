@@ -15,9 +15,11 @@ El servicio cuenta con dos métodos: `rut` y `nombre`:
 Ambos métodos responden un mensaje que indican si el dígito verificador es válido (en caso de `rut`) o un saludo personalizado (en caso de `nombre`).
 
 ### Cliente
-
-
-
+Previamente instalados NodeJS y NPM:
+* Situarse en la carpeta `soap-web-client`.
+* En la línea de comandos, ejecutar `npm install` para instalar los paquetes requeridos.
+* Finalmente ejecutar `npm run serve` para levantar el cliente.
+* Una aplicación web se encontrará disponible en la dirección `http://localhost:8080/`. En caso de estar ocupado dicho puerto, se utilizará otro que se indicará en la terminal respectiva.
 
 ## Servicio web REST
 REST es una interfaz para conectar varios sistemas basados en el protocolo HTTP y sirve para obtener, generar datos y operaciones, devolviendo esos datos en un formato JSON.
