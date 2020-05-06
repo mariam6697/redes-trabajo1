@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ValidarutController } from './validarut/validarut.controller';
-import { ValidaterutService } from './validaterut/validaterut.service';
-import { SaludoController } from './saludo/saludo.controller';
-import { PersonalizarService } from './personalizar/personalizar.service';
+import { ValidarModule } from './validar/validar.module';
+import { SaludoModule } from './saludo/saludo.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController, ValidarutController, SaludoController],
-  providers: [AppService, ValidaterutService, PersonalizarService],
+  imports: [ValidarModule, SaludoModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

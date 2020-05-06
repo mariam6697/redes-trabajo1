@@ -1,6 +1,6 @@
 import { Controller, Body, Get, Post, Param, Req, Res } from '@nestjs/common';
 import { CreateNameDto } from './dto/create-name.dto';
-import { PersonalizarService } from '../personalizar/personalizar.service'
+import { PersonalizarService } from './personalizar.service';
 
 @Controller('saludo')
 export class SaludoController {
