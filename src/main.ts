@@ -11,8 +11,7 @@ async function bootstrap() {
     new FastifyAdapter()
   );
   app.enableCors();
-  await app.listen(3000);
+  const port: number = parseInt(`${process.env.PORT}`, 10) || 3000;
+  await app.listen(port);
 }
 bootstrap();
-
-
