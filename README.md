@@ -34,6 +34,9 @@ En la ruta `validarut` podemos encontrarnos con el primer método para la valida
 
 En la ruta `saludo` podemos encontrarnos con el segundo servicio que tiene la función de retornar un saludo personalizado en función del género del usuario. Ingresado por el método `Post` desde el `body`.  Los parámetros a ingresar son `nombres` que corresponde a los nombres del usuario. Los apellidos se ingresan en `materno` y `paterno`, mientras que el `genero` debe ser "M" ó "m"
 
-
 ### Cliente
-
+Previamente instalados NodeJS y NPM:
+* Situarse en la carpeta `rest-web-client`.
+* En la línea de comandos, ejecutar `npm install` para instalar los paquetes requeridos.
+* Finalmente ejecutar `npm run serve` para levantar el cliente.
+* Una aplicación web se encontrará disponible en la dirección `http://localhost:8080/`. En caso de estar ocupado dicho puerto, se utilizará otro que se indicará en la terminal respectiva.

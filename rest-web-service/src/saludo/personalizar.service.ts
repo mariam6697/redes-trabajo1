@@ -34,13 +34,13 @@ export class PersonalizarService {
 					saludo = saludo + "a Sra"
 				}
 
-				return `${saludo} ${nombres} ${paterno} ${materno}`
+				return { estado: 1, mensaje: `${saludo} ${nombres} ${paterno} ${materno}`}
 
-			}else{
-				return 'Genero invalido'
+			} else{
+				return { estado: 2, mensaje: 'Género inválido' }
 			
-}		}else{
-			return 'Formato incorrecto'
+}		} else{
+			return { estado: 3, mensaje: 'Formato incorrecto' }
 		}
  }
 }

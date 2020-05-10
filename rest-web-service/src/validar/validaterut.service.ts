@@ -14,7 +14,7 @@ export class ValidaterutService {
 	rutTmp = rutTmp.split("-").join("");
 	rutTmp = rutTmp.split(".").join("");
 	if(isNaN(Number(rutTmp)) || isNaN(Number(DV)) && DV.toUpperCase()!="K"){
-		return `Ingrese un rut valido`
+		return  { estado: 2, mensaje: `Ingrese caracteres válidos (números, guión y K)`}
 	}else{
 		// Invertir rut
 		var rutInvertido = 0;
@@ -39,19 +39,19 @@ export class ValidaterutService {
 		if(trueDV == 10){
 			trueDV = "K";
 			if(trueDV == DV.toUpperCase()){
-				return `El rut es valido`
+				return { estado: 1, mensaje: `El RUT es válido`}
 			}
 			else{
-				return `El rut no es valido`
+				return { estado: 2, mensaje: `El RUT no es válido`}
 			}
 		}
 		if(trueDV == 11){
 			trueDV == 0;
 		}
 		if(trueDV == DV){
-			return `El rut es valido`
+			return { estado: 1, mensaje: `El RUT es válido`}
 		}else{
-			return `El rut no es valido`
+			return { estado: 2, mensaje: `El RUT no es válido`}
 		}
 
 

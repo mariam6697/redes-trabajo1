@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+ - "node"
+
+cache: npm
+
+before_install: cd rest-web-client
+
+script:
+ - npm run build
+
+deploy:
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
+ local_dir: rest-web-client/dist
+ on:
+   branch: master

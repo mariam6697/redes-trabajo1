@@ -43,10 +43,6 @@ import axios from "axios";
 
 export default {
   name: "saludo",
-  components: {},
-  created() {},
-  beforeDestroy() {},
-  mounted() {},
   data() {
     return {
       datos: {
@@ -59,8 +55,6 @@ export default {
       respuesta: null
     };
   },
-  watch: {},
-  computed: {},
   methods: {
     generarSaludo() {
       if (this.datos != null) {
@@ -100,7 +94,7 @@ export default {
       } else {
         this.respuesta = {
           estado: 3,
-          mensaje: "Ingrese un RUT"
+          mensaje: "Ingrese todos los datos"
         };
         console.log(new Date().toLocaleString(), "Error:", this.respuesta);
       }

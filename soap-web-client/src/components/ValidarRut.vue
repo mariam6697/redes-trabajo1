@@ -34,18 +34,12 @@ import axios from "axios";
 
 export default {
   name: "validar-rut",
-  components: {},
-  created() {},
-  beforeDestroy() {},
-  mounted() {},
   data() {
     return {
       rut: null,
       respuesta: null
     };
   },
-  watch: {},
-  computed: {},
   methods: {
     validarRut() {
       if (this.rut != null && this.rut != "") {

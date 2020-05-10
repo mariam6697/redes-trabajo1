@@ -3,12 +3,7 @@
     <v-app>
       <div class="fill-height">
         <div>
-          <v-app-bar
-            
-            color="#084387"
-            dark
-            src="https://wallpaperaccess.com/full/1567666.png"
-          >
+          <v-app-bar color="#084387" dark src="https://wallpaperaccess.com/full/1567666.png">
             <v-app-bar-nav-icon>
               <v-icon>mdi-web</v-icon>
             </v-app-bar-nav-icon>
@@ -17,8 +12,8 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn icon href="https://github.com/mariam6697/WS-SOAP-REST">
-              <v-icon>mdi-source-repository</v-icon>
+            <v-btn icon href="https://github.com/mariam6697/redes-trabajo1">
+              <v-icon>mdi-github</v-icon>
             </v-btn>
           </v-app-bar>
         </div>
@@ -26,10 +21,18 @@
           <v-expansion-panels accordion v-model="panelAbierto" class="pa-3">
             <v-expansion-panel>
               <v-expansion-panel-header>
+                <v-list-item-title class="title text-uppercase">Presentación</v-list-item-title>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <presentacion-grupo />
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel>
+              <v-expansion-panel-header>
                 <v-list-item-title class="title text-uppercase">Validar RUT</v-list-item-title>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                  <validar-rut ref="validarRut"/>
+                <validar-rut ref="validarRut" />
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
@@ -37,7 +40,7 @@
                 <v-list-item-title class="title text-uppercase">Saludo personalizado</v-list-item-title>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                  <saludo ref="saludo"/>
+                <saludo ref="saludo" />
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -50,29 +53,17 @@
 <script>
 import ValidarRut from "./components/ValidarRut";
 import Saludo from "./components/Saludo";
+import PresentacionGrupo from "./components/PresentacionGrupo"
 export default {
   components: {
       ValidarRut,
-      Saludo
+      Saludo,
+      PresentacionGrupo
   },
   data() {
     return {
         panelAbierto: 0
     };
-  },
-  computed: {
-  },
-  created() {
-  },
-  beforeDestroy() {
-  },
-  mounted() {
-  },
-  updated: function() {
-  },
-  watch: {
-  },
-  methods: {
   }
 };
 </script>
