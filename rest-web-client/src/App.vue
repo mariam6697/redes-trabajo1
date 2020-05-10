@@ -2,24 +2,10 @@
 <div>
 
   <h1>Cliente para REST web services </h1>
-
   <h3> Validador de rut </h3>
-   <input type="text" placeholder="Ingrese Rut..." v-model="rut">&nbsp;
-   <button  @click="enviaRut" > Comprobar RUT</button>
-   <h4>{{estadorut}}</h4>
-    
-    <h3>Generador de Saludo</h3>
-   
-    
-    <input type="text" placeholder="Ingrese Nombres..." v-model="nombres"> <br/>
-    <input type="text" placeholder="Ingrese Paterno..." v-model="paterno"> <br/>
-    <input type="text" placeholder="Ingrese Materno..." v-model="materno"> <br/>
-    <input type="text" placeholder="Ingrese Genero (F,M)..." v-model="genero">
-    <br/> <br/>
-    <button @click="enviaSaludo" > Generar Saludo</button>
-    <h4>{{estadosaludo}}</h4>
-  
-
+  <Validarut></Validarut>
+  <h3>Generador de Saludo</h3>
+  <Saludo></Saludo>
 
 </div>
 
@@ -28,51 +14,14 @@
 </template>
 
 <script>
-import axios from "axios";
+import Saludo from "./components/Saludo.vue";
+import Validarut from "./components/Validarut.vue";
 
 export default {
-  data() {
-    return {
-      rut: null,
-      estadorut: null,
-      nombres: null,
-      paterno: null,
-      materno: null,
-      genero: null,
-      estadosaludo: null
-    };
-  },
-  mounted() {},
-
-  methods: {
-    enviaRut() {
-      //funcion nueva que enviara el rut ingresado por pantalla a la propiedad estado
-      axios
-        .post("http://localhost:3000/validarut", {
-          rut: this.rut
-        })
-        .then(response => {
-          console.log(response);
-          this.estadorut = response.data;
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
-    enviaSaludo() {
-      //funcion nueva que enviara los valores ingresados a las propiedades de saludo
-      axios
-        .post("http://localhost:3000/saludo", {
-          nombres: this.nombres,
-          paterno: this.paterno,
-          materno: this.materno,
-          genero: this.genero
-        })
-        .then(response => {
-          console.log(response);
-          this.estadosaludo = response.data;
-        });
-    }
+  name: "App",
+  components: {
+    Saludo,
+    Validarut
   }
 };
 </script>
