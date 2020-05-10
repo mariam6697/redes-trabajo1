@@ -11,7 +11,7 @@
         <img style="border-radius: 100px; width: 150px;" :src="integrante.imagenUrl" />
         <span style="font-size: 16px; font-weight: bold;">{{ integrante.nombre }}</span>
         <span style="font-size: 14px">{{ integrante.rut }}</span>
-        <a :href="integrante.github" style="padding: 5px; color: #000000">
+        <a :href="'https://github.com/'+integrante.github" style="padding: 5px; color: #000000">
           <b-icon icon="github"></b-icon>
         </a>
       </div>
