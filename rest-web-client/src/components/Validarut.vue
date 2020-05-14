@@ -51,7 +51,7 @@ export default {
     enviaRut() {
       console.log(new Date().toLocaleString(), "Rut enviado:", this.rut);
       axios
-        .post("http://localhost:3000/validarut", {
+        .post(this.$apiUrl + "/validarut", {
           rut: this.rut
         })
         .then(response => {

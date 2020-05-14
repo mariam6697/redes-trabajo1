@@ -55,7 +55,7 @@ export default {
           console.log(new Date().toLocaleString(), "Rut enviado:", this.rut)
         axios
           .post(
-            "http://localhost:5051",
+            this.$apiUrl,
             xmls
           )
           .then(res => {

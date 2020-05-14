@@ -78,7 +78,7 @@ export default {
   methods: {
     enviaSaludo() {
       axios
-        .post("http://localhost:3000/saludo", {
+        .post(this.$apiUrl + "/saludo", {
           nombres: this.nombres,
           paterno: this.paterno,
           materno: this.materno,

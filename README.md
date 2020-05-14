@@ -19,7 +19,7 @@ Previamente instalados NodeJS y NPM:
 * Situarse en la carpeta `soap-web-client`.
 * En la línea de comandos, ejecutar `npm install` para instalar los paquetes requeridos.
 * Finalmente ejecutar `npm run serve` para levantar el cliente.
-* Una aplicación web se encontrará disponible en la dirección `http://localhost:8080/`. En caso de estar ocupado dicho puerto, se utilizará otro que se indicará en la terminal respectiva.
+* Una aplicación web se encontrará disponible en la dirección `http://localhost:6067/`.
 
 ## Servicio web REST
 REST es una interfaz para conectar varios sistemas basados en el protocolo HTTP y sirve para obtener, generar datos y operaciones, devolviendo esos datos en un formato JSON.
@@ -39,4 +39,4 @@ Previamente instalados NodeJS y NPM:
 * Situarse en la carpeta `rest-web-client`.
 * En la línea de comandos, ejecutar `npm install` para instalar los paquetes requeridos.
 * Finalmente ejecutar `npm run serve` para levantar el cliente.
-* Una aplicación web se encontrará disponible en la dirección `http://localhost:8080/`. En caso de estar ocupado dicho puerto, se utilizará otro que se indicará en la terminal respectiva.
+* Una aplicación web se encontrará disponible en la dirección `http://localhost:6066/`.

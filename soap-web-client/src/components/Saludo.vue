@@ -78,7 +78,7 @@ export default {
           </soapenv:Envelope>`;
           console.log(new Date().toLocaleString(), "Datos enviados:", this.datos)
         axios
-          .post("http://localhost:5051", xmls)
+          .post(this.$apiUrl, xmls)
           .then(res => {
             var xml = new DOMParser().parseFromString(res.data, "text/xml");
             console.log(new Date().toLocaleString(), "Respuesta en XML:", res.data);
