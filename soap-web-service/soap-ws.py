@@ -6,17 +6,17 @@ from cors import CorsService
 from spyne.model.primitive.string import Unicode
 from spyne.protocol.soap.soap11 import Soap11
 from spyne.server.wsgi import WsgiApplication
-from funciones import validarRut, generarSaludo, Respuesta
+from funciones import validar_rut, generar_saludo, Respuesta
 
 class RutService(CorsService):
     @rpc(Unicode, _returns=Respuesta)
     def rut(ctx, rut):
-        return validarRut(ctx, rut)
+        return validar_rut(ctx, rut)
     
 class NombreService(CorsService):
     @rpc(Unicode, Unicode, Unicode, Unicode, _returns=Respuesta)
     def nombre(ctx, nombres, paterno, materno, genero):
-        return generarSaludo(ctx, nombres, paterno, materno, genero)
+        return generar_saludo(ctx, nombres, paterno, materno, genero)
 
 application = Application([RutService, NombreService],
     tns='spyne.webservice.soap',

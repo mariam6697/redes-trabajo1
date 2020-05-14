@@ -11,28 +11,28 @@ class Respuesta(ComplexModel):
         self.estado = estado
         self.mensaje = mensaje
 
-def validarRut(ctx, rut):
-    rutConDv = rut
-    rut = re.sub('-', '', rutConDv)[:-1].replace('.', '')
+def validar_rut(ctx, rut):
+    rut_con_dv = rut
+    rut = re.sub('-', '', rut_con_dv)[:-1].replace('.', '')
     print("RUT ingresado", rut)
-    dv = rutConDv.strip()[-1].upper()
+    dv = rut_con_dv.strip()[-1].upper()
     if (rut.isnumeric() and (dv.isnumeric() or dv == 'K')):
         reversa = map(int, reversed(rut))
         factores = cycle(range(2, 8))
         suma = sum(d * f for d, f in zip(reversa, factores))
-        dvReal = str((-suma) % 11)
-        if (dv == dvReal):
+        dv_real = str((-suma) % 11)
+        if (dv == dv_real):
             return Respuesta(True, 'El dígito verificador ' + dv + ' es correcto para el RUT ' + rut)
-        elif (dv == 'K' and dvReal == '10'):
+        elif (dv == 'K' and dv_real == '10'):
             return Respuesta(True, 'El dígito verificador ' + dv + ' es correcto para el RUT ' + rut)
         else:
             return Respuesta(False, 'El dígito verificador ' + dv + ' es incorrecto para el RUT ' + rut)
     else:
         return Respuesta(False, 'Ingrese sólo números, guión y K')
 
-def generarSaludo(ctx, nombres, paterno, materno, genero):
+def generar_saludo(ctx, nombres, paterno, materno, genero):
     if (nombres != None and paterno != None and materno != None and genero != None):
-        nombreCompleto = (nombres + ' ' + paterno + ' ' + materno).title()
+        nombre_completo = (nombres + ' ' + paterno + ' ' + materno).title()
         mujer = False
         genero = genero.upper() if genero != None else None
         if (genero == 'F'):
@@ -42,7 +42,7 @@ def generarSaludo(ctx, nombres, paterno, materno, genero):
             saludo = 'Sr.'
         else:
             return Respuesta(False, 'Género no válido. Intente nuevamente.')
-        return Respuesta(True, ('Bienvenida' if mujer else 'Bienvenido') + ' ' + saludo + ' ' + nombreCompleto)
+        return Respuesta(True, ('Bienvenida' if mujer else 'Bienvenido') + ' ' + saludo + ' ' + nombre_completo)
     elif (genero == None):
         return Respuesta(False, 'Ingrese un género.')
     else:
